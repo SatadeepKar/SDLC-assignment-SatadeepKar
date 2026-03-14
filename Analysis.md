@@ -1,37 +1,53 @@
-# Assignment: "Release Manager" Roleplay
+# Analysis: Why the Waterfall Model Would Fail in This Situation
 
-**Student Name:** Satadeep Kar
+## Task 1: Why Waterfall Fails Here
 
-# Task 1: Why Waterfall Fails Here
+In the Smart-Attend app project, the development is already halfway complete when the Dean introduces a major new feature: biometric verification using Face ID to prevent proxy attendance. If this project were following the traditional Waterfall model, adding such a requirement at this stage would cause serious problems. Below are three main reasons why:
 
-In our scenario for the "Smart-Attend" app, we are halfway through development when the Dean introduces a massive new requirement: Biometric (Face ID) verification to stop proxy attendance. If we were using the traditional Waterfall model for this project, trying to add this mid-way would completely derail it. Here are 3 specific reasons why:
+1. Lack of Flexibility (Sequential Phase Issue)
 
-1. It is too rigid (The Phase-Gate Problem)
-   The Waterfall model works strictly in sequence—Requirements, Design, Implementation, Testing, and Deployment. Each phase must be signed off before the next begins. Because we are already halfway through development, getting the Face ID requirement means we are forced back to step one. We cannot simply "add" it; Waterfall's rigidity means we must rewrite the entire Business Requirements Document (BRD) and get it approved all over again, breaking the strict linear flow of the project.
+The Waterfall model follows a strict step-by-step process: Requirements → Design → Development → Testing → Deployment. Each stage must be fully completed and approved before moving forward.
 
-2. High cost of making changes (The "Blueprint" Dilemma)
-   In Waterfall, the system architecture (the "blueprint") is finalized during the Design phase. Our original database schema and backend were built exclusively to check GPS coordinates for Geo-fencing and log simple student IDs. Dropping Face ID in now means we have to drastically alter our database to securely store biometric data hashes, rewrite the app to request camera hardware permissions, and update our privacy compliance. Redesigning and rewriting these core components midway results in massive financial costs and major timeline delays.
+Since development is already underway, introducing the Face ID feature would force the team to go back to the initial requirements stage. The Business Requirements Document (BRD) would need to be rewritten and approved again. This disrupts the linear process of Waterfall and delays the entire project schedule.
 
-3. Testing happens too late (The "Big Bang" Integration)
-   Waterfall notoriously leaves the Testing phase to the very end of the project cycle. If we try to force the Biometric logic into the existing Geo-fencing code now, we won't actually test if they work together until month 5 or 6 out of the 6-month timeline. For example, what if the Face ID scanner takes up so much memory that it causes the background Geo-fencing tracker to crash? We wouldn't discover this critical conflict until it's far too late to fix before the deadline, leading to a catastrophic launch failure.
+2. Expensive and Difficult Changes
 
-# Task 2: The "Agile" Pivot (The Scrum Framework)
+In Waterfall projects, the system design and architecture are finalized early in the design phase. The current system for Smart-Attend was originally built only to handle GPS-based geo-fencing and simple student ID records.
 
-To handle the Dean's new requirement without failing, we should drop Waterfall and switch to the Agile Scrum framework. Scrum allows us to embrace changing requirements by working in short, iterative 2-week cycles called "Sprints." This lets us deliver working software continuously and adapt based on feedback.
+Adding biometric authentication now would require major modifications. The database would need to support secure storage of biometric data, the application would need camera access and facial recognition functionality, and additional privacy and security compliance would have to be implemented. Making such large changes after development has started would significantly increase both cost and development time.
 
-## Sprint 1 (MVP - Minimum Viable Product)
+3. Late Testing Risks (Delayed Integration Testing)
 
-The goal of our first sprint is to get a usable version of the core product into the hands of users as fast as possible. Our Sprint Backlog will focus exclusively on:
+Another weakness of Waterfall is that testing usually occurs near the end of the project. If the biometric system is forced into the current geo-fencing structure, the combined system may not be tested until the final months of the project.
 
-- Developing the basic user interface (UI) and navigation.
-- Setting up the standard User Login system (via University ID).
-- Implementing and testing the core Geo-fencing logic so that students can start triggering automated attendance.
-  By the end of this sprint, we will have a shippable MVP to demonstrate to stakeholders.
+For example, the Face ID module might consume a large amount of device memory, which could cause the background geo-fencing service to fail or crash. If such compatibility problems are discovered late in the process, the team may not have enough time to fix them before the release deadline, increasing the risk of a failed product launch.
 
-## Sprint 2 (The Update)
+## Task 2: Switching to an Agile Approach (Using Scrum)
 
-In the second sprint, we review the feedback from the MVP and tackle the Dean's new requirement. We will:
+To manage the Dean’s new request effectively, the team should move from the Waterfall model to the Agile Scrum framework. Scrum supports changing requirements by dividing work into short development cycles called Sprints, usually lasting two weeks. This allows the team to deliver small working versions of the product and continuously improve it based on feedback.
 
-- Integrate the requested Biometric (Face ID) verification logic on top of the existing login flow to prevent proxy attendance.
-- Refine the Geo-fencing radius and reporting dashboard based on any bugs or feedback discovered during the Sprint 1 review.
-  Working this way ensures the new, complex feature is built safely on top of a stable MVP, rather than risking the whole project at once.
+Sprint 1 – Minimum Viable Product (MVP)
+
+The objective of the first sprint is to build a basic but functional version of the application as quickly as possible.
+
+The Sprint Backlog will include:
+
+Designing the main user interface and navigation structure.
+
+Implementing a basic login system using the University ID.
+
+Developing and testing the geo-fencing attendance mechanism so that students can automatically mark attendance when they are within the approved location.
+
+At the end of Sprint 1, the team will have a working MVP that can be shown to stakeholders for early feedback.
+
+Sprint 2 – Feature Enhancement
+
+During the second sprint, the team will review the results of the MVP and begin implementing the Dean’s new requirement.
+
+The focus will be on:
+
+Adding Face ID biometric verification to the login process to prevent proxy attendance.
+
+Improving the geo-fencing accuracy and attendance reporting dashboard based on feedback and issues discovered in Sprint 1.
+
+By following this Agile process, the team can safely introduce the new biometric feature without disrupting the entire project, since each sprint builds upon the previous working version of the product.
