@@ -3,28 +3,30 @@
 
 # Task 1: Why Waterfall Fails Here
 
-In our scenario for the "Smart-Attend" app, we're halfway through making the app when the Dean suddenly asks for a big new feature: Biometric (Face ID) verification. If we were using the traditional Waterfall model for this project, adding this midway would be a huge disaster. Here are 3 reasons why:
+In our scenario for the "Smart-Attend" app, we are halfway through development when the Dean introduces a massive new requirement: Biometric (Face ID) verification to stop proxy attendance. If we were using the traditional Waterfall model for this project, trying to add this mid-way would completely derail it. Here are 3 specific reasons why:
 
-1. It's too rigid
-The whole point of Waterfall is that you do things one step at a time. First you gather all the requirements, then you design it, then you code it. Once you move past the requirements phase, you aren't supposed to go back. Since we are already halfway done with development, going all the way back to the start just to add the Face ID requirement breaks the whole Waterfall flow. It's just not flexible enough to handle sudden pivots like this.
+1. It's too rigid (The Phase-Gate Problem)
+The Waterfall model works strictly in sequence—Requirements, Design, Implementation, Testing, and Deployment. Each phase must be signed off before the next begins. Because we are already halfway through development, getting the Face ID requirement means we are forced back to step one. We can't simply "add" it; Waterfall's rigidity means we must rewrite the entire Business Requirements Document (BRD) and get it approved all over again, breaking the strict linear flow of the project.
 
-2. High cost of making changes
-When we started coding, we built the app's foundation and database based on the original plan (which only had Geo-fencing). Dropping a massive new feature like Face ID into the mix right now means we'd probably have to throw away a lot of the code and designs we've already spent time and money on. It would take way longer and cost a lot more because we'd basically have to start parts of it over from scratch.
+2. High cost of making changes (The "Blueprint" Dilemma)
+In Waterfall, the system architecture (the "blueprint") is finalized during the Design phase. Our original database schema and backend were built exclusively to check GPS coordinates for Geo-fencing and log simple student IDs. Dropping Face ID in now means we have to drastically alter our database to securely store biometric data hashes, rewrite the app to request camera hardware permissions, and update our privacy compliance. Redesigning and rewriting these core components midway results in massive financial costs and major timeline delays.
 
-3. Testing happens too late
-In Waterfall, you only really start testing the app at the very end of the project, after all the coding is finished. If we try to just jam the Face ID stuff into what we have now, we won't actually test if the old Geo-fencing system and the new Face ID system work together until the very end of the 6 months. By then, if something is broken or they clash, it will be too late to fix it before the deadline.
+3. Testing happens too late (The "Big Bang" Integration)
+Waterfall notoriously leaves the Testing phase to the very end of the project cycle. If we try to force the Biometric logic into the existing Geo-fencing code now, we won't actually test if they work together until month 5 or 6 out of the 6-month timeline. For example, what if the Face ID scanner takes up so much memory that it causes the background Geo-fencing tracker to crash? We wouldn't discover this critical conflict until it's far too late to fix before the deadline, leading to a catastrophic launch failure.
 
 # Task 2: The "Agile" Pivot (The Scrum Framework)
 
-To handle the Dean's new requirement without failing, we should switch to the Agile Scrum framework. This lets us break the remaining work into two short, 2-week Sprints so we can deliver value quickly and adjust to feedback.
+To handle the Dean's new requirement without failing, we should drop Waterfall and switch to the Agile Scrum framework. Scrum allows us to embrace changing requirements by working in short, iterative 2-week cycles called "Sprints." This lets us deliver working software continuously and adapt based on feedback.
 
-## Sprint 1 (MVP)
-This first sprint is all about getting the "Minimum Viable Product" (MVP) out the door. We'll focus exclusively on:
-* Building the basic UI.
-* Setting up the User Login system.
-* Implementing the core Geo-fencing logic so students can actually start marking attendance.
+## Sprint 1 (MVP - Minimum Viable Product)
+The goal of our first sprint is to get a usable version of the core product into the hands of users as fast as possible. Our Sprint Backlog will focus exclusively on:
+* Developing the basic user interface (UI) and navigation.
+* Setting up the standard User Login system (via University ID).
+* Implementing and testing the core Geo-fencing logic so that students can start triggering automated attendance.
+By the end of this sprint, we will have a shippable MVP to demonstrate to stakeholders.
 
 ## Sprint 2 (The Update)
-In the second sprint, we update the app with the new stuff. We will:
-* Integrate the new Biometric (Face ID) logic to prevent proxy attendance.
-* Refine and improve the reporting dashboard based on the early feedback we get from people using the Sprint 1 MVP.
+In the second sprint, we review the feedback from the MVP and tackle the Dean's new requirement. We will:
+* Integrate the requested Biometric (Face ID) verification logic on top of the existing login flow to prevent proxy attendance.
+* Refine the Geo-fencing radius and reporting dashboard based on any bugs or feedback discovered during the Sprint 1 review.
+Working this way ensures the new, complex feature is built safely on top of a stable MVP, rather than risking the whole project at once.
