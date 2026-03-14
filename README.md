@@ -1,24 +1,43 @@
-# SDLC Assignment - Satadeep Kar
+## Why implement CI/CD for Sprint releases?
 
-This repository contains my submission for the "Release Manager" Roleplay assignment in the SDLC & DevOps Fundamentals course.
+After shifting from the **Waterfall model to the Agile Scrum methodology** to address the Dean’s new biometric requirement, the development team now works in **two-week sprint cycles**. Manually releasing an update after every sprint would be time-consuming and increases the chances of human error.
 
-Files included:
+To make the release process more efficient and dependable, a **Continuous Integration and Continuous Deployment (CI/CD) pipeline** would be introduced. This automated pipeline ensures that each update of the **Smart-Attend** application is properly tested and delivered to students quickly and reliably.
 
-- `Analysis.pdf` / `Analysis.md`: Detailed analysis of why the Waterfall model fails for changing requirements and how the Scrum framework solves this.
-- `Backlog.csv`: The Sprint 1 backlog with user stories, estimated hours, and priorities.
-- `README.md`: Explanation of why we would implement a CI/CD pipeline.
+Below are the main reasons why CI/CD is essential for this project.
 
-## Why use CI/CD for pushing Sprint updates?
+---
 
-Since we switched to the Agile (Scrum) framework to manage the Dean's mid-project pivot, we are now releasing software in iterative 2-week sprints. Releasing software manually every two weeks is prone to human error, slow, and tedious. To handle this, we would implement a **Continuous Integration and Continuous Deployment (CI/CD)** pipeline to automate the process of getting the app out to the university students.
+### Continuous Integration (CI) helps prevent regression bugs
 
-This section explains why CI/CD is critical for the "Smart-Attend" app:
+In **Sprint 2**, developers start working on the **Face ID authentication feature**. This feature modifies parts of the codebase that were completed earlier, including the **Geo-fencing attendance system** and the **University ID login** built during Sprint 1.
 
-1. **Continuous Integration (CI) prevents regression bugs:**
-   When the development team starts building the new Face ID feature in Sprint 2, they will be altering the codebase that was stabilized in Sprint 1. With CI, every time a developer commits code to GitHub, an automated pipeline (like GitHub Actions or Jenkins) immediately builds the app and runs automated unit tests. This ensures the new Face ID logic doesn't accidentally break the existing Geo-fencing system or the University ID login. If a test fails, the code is blocked from merging, keeping our main branch stable.
+With CI in place, whenever a developer pushes code to the **GitHub repository**, an automated workflow (using tools such as **GitHub Actions** or **Jenkins**) will:
 
-2. **Continuous Deployment (CD) automates distribution:**
-   In a traditional setup, pushing an update requires the university IT team to manually package the app and distribute it, which takes days. With CD, once the code passes all CI tests, the pipeline automatically compiles the production app bundle (APK/IPA) and publishes it directly to testing environments (like TestFlight or Google Play Beta) or straight to the students' phones. This allows us to hit our 2-week Sprint release goals effortlessly at the end of Sprint 1 (the MVP) and Sprint 2 (the Biometric update).
+- Automatically build the application  
+- Execute all predefined unit tests  
 
-3. **Faster Feedback Loops & Hotfixes:**
-   Agile relies entirely on user feedback. Because CD allows us to safely push the Sprint 1 MVP automatically, students can test the geofencing in the real world immediately. If they discover a critical bug (for example, the GPS drains phone battery), the developers can write a fix, and the CI/CD pipeline can automatically push the patched version to all students within minutes, rather than waiting for another massive, manual release cycle.
+If any of the tests fail, the update is blocked from merging into the **main branch**. This ensures that newly added features do not accidentally break existing functionality and keeps the primary codebase stable.
+
+---
+
+### Continuous Deployment (CD) streamlines the release process
+
+Without automation, releasing a new version would require the **university IT team** to manually prepare and distribute the application update, which could take several days.
+
+With CD, once all CI checks pass:
+
+- The pipeline automatically builds the **production version of the app (APK/IPA)**  
+- The compiled build is then deployed to testing platforms such as **Google Play Beta** or **TestFlight**, or directly distributed to users  
+
+This automated workflow enables the team to deliver updates smoothly at the end of each sprint, including **Sprint 1 (the MVP)** and **Sprint 2 (the biometric feature update)**.
+
+---
+
+### Faster feedback and quicker fixes
+
+One of the key benefits of Agile development is the ability to collect **rapid user feedback**.
+
+Because the CI/CD pipeline can deploy the **Sprint 1 MVP** immediately, students can begin using the geofencing attendance system in real-world scenarios. If users encounter a major issue—for example, **high battery consumption caused by GPS usage**—developers can quickly implement a fix and push the update through the pipeline.
+
+The corrected version can then be delivered to users **within minutes**, instead of waiting for another large manual release cycle.
