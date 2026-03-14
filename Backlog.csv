@@ -1,0 +1,6 @@
+Task ID,User Story,Priority,Estimated Hours
+US01,"As a student, I want to login via university ID so I can access my profile.",High,4
+US02,"As a teacher, I want to see a list of who is present right now in my class.",High,6
+US03,"As the system, I want to check if a student is within 10m of the classroom for geofencing.",High,8
+US04,"As a student, I want my phone to notify me when my attendance gets marked.",Medium,3
+US05,"As an admin, I want to be able to manually fix attendance if there's a technical error.",Low,4
